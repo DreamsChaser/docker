@@ -1,0 +1,131 @@
+#https://docs.docker.com/compose/compose-file/
+#version 
+version: "3.8"
+services:
+  # 节点1
+  redis-1:
+    #容器服务名
+    container_name: redis-1
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6381:6381
+      - 16381:16381
+    #映射宿主机的数据卷 配置数据目录和配置文件目录 HOST:CONTAINER
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6381/data:/data
+      - /usr/docker/redis-cluster/redis-6381/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
+      
+  # 节点2
+  redis-2:
+    #容器服务名
+    container_name: redis-2
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6382:6382
+      - 16382:16382
+    #映射宿主机的数据卷 配置目录
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6382/data:/redis/data
+      - /usr/docker/redis-cluster/redis-6382/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
+  # 节点3
+  redis-3:
+    #容器服务名
+    container_name: redis-3
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6383:6383
+      - 16383:16383
+    #映射宿主机的数据卷 配置目录
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6383/data:/data
+      - /usr/docker/redis-cluster/redis-6383/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
+  # 节点4
+  redis-4:
+    #容器服务名
+    container_name: redis-4
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6384:6384
+      - 16384:16384
+    #映射宿主机的数据卷 配置目录
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6384/data:/redis/data
+      - /usr/docker/redis-cluster/redis-6384/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
+  # 节点5
+  redis-5:
+    #容器服务名
+    container_name: redis-5
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6385:6385
+      - 16385:16385
+    #映射宿主机的数据卷 配置目录
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6385/data:/redis/data
+      - /usr/docker/redis-cluster/redis-6385/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
+  # 节点6
+  redis-6:
+    #容器服务名
+    container_name: redis-6
+    #基础镜像
+    image: redis
+    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
+    network_mode: "host"
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6386:6386
+      - 16386:16386
+    #映射宿主机的数据卷 配置目录
+    volumes: 
+      - /usr/docker/redis-cluster/redis-6386/data:/redis/data
+      - /usr/docker/redis-cluster/redis-6386/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf

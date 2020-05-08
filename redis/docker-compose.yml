@@ -1,0 +1,22 @@
+#docker-compose版本
+version: "3.8"
+services:
+  # service实例名
+  redis:
+    #容器服务名
+    container_name: redis-0
+    #基础镜像
+    image: redis
+    #端口映射
+    #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
+    ports:
+      - 6379:6379
+      - 16379:16379
+    #映射宿主机的数据卷 配置数据目录和配置文件目录 HOST:CONTAINER
+    volumes: 
+      - /usr/docker/redis/data:/data
+      - /usr/docker/redis/redis.conf:/etc/redis/redis.conf
+    # 设置服务默认的启动程序
+    entrypoint: 
+      - redis-server 
+      - /etc/redis/redis.conf
