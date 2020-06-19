@@ -8,8 +8,6 @@ services:
     container_name: redis-1
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
@@ -30,8 +28,6 @@ services:
     container_name: redis-2
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
@@ -51,8 +47,6 @@ services:
     container_name: redis-3
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
@@ -72,8 +66,6 @@ services:
     container_name: redis-4
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
@@ -93,8 +85,6 @@ services:
     container_name: redis-5
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
@@ -114,8 +104,6 @@ services:
     container_name: redis-6
     #基础镜像
     image: redis
-    #网络 host模式 和宿主机公用 以便集群之中的其他机器互相通信
-    network_mode: "host"
     #端口映射
     #第一个端口是客户端通信端口 第二个端口为集群总线端口 用于失败检测以及故障转移、选举等 偏移量总是10000
     ports:
